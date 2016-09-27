@@ -1,20 +1,25 @@
 //your code here
-
-
+NormalParticle bob;
 void setup()
 {
 	//your code here
 	size(500,500);
+	bob = new NormalParticle();
+	/*
+	if(int i; i<=20, i++)
+	{
+	
+	}
+	*/
 
 }
 void draw()
 {
 	//your code here
 	background(0);
-	if(int i; i<=20, i++)
-	{
+	bob.show();
+	bob.move();
 
-	}
 }
 class NormalParticle
 {
@@ -30,10 +35,15 @@ class NormalParticle
 	nColor = (int)(Math.random()*250);
 	}
 
-	void show
+	void show()
 	{
 		fill(nColor,nColor,nColor);
-		line(nX,nY, Math.cos(nX)*nSpeed, Math.cos(nY)*nSpeed)
+		ellipse(nX,nY,20,20);
+	}
+	void move()
+	{
+		nX = (int)(Math.cos(nX)*nSpeed);
+		nY = (int)(Math.sin(nY)*nSpeed);
 	}
 
 
