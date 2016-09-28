@@ -1,24 +1,30 @@
 //your code here
-NormalParticle bob;
+NormalParticle[] bob;
 void setup()
 {
 	//your code here
 	size(500,500);
-	bob = new NormalParticle();
-	/*
-	if(int i; i<=20, i++)
+	bob = new NormalParticle[20];
+	for(int i = 0; i < bob.length; i++)
 	{
-	
+		bob[i] = new NormalParticle();
+
+
 	}
-	*/
+
+	
 
 }
 void draw()
 {
 	//your code here
 	background(0);
-	bob.show();
-	bob.move();
+	for(int i = 0; i<bob.length; i++)
+ 	{
+ 		bob[i].show();
+ 		bob[i].move();
+ 	}
+
 
 }
 class NormalParticle
@@ -28,9 +34,9 @@ class NormalParticle
 	int nColor;
 	NormalParticle()
 	{
-	nX=250;
-	nY=250;
-	nSpeed = 10;
+	nX=700;
+	nY=700;
+	nSpeed = 50;
 	nAngle = 0;
 	nColor = (int)(Math.random()*250);
 	}
@@ -38,12 +44,12 @@ class NormalParticle
 	void show()
 	{
 		fill(nColor,nColor,nColor);
-		ellipse(nX,nY,20,20);
+		ellipse((float)nX,(float)nY,50,50);
 	}
 	void move()
 	{
-		nX = (int)(Math.cos(nX)*nSpeed);
-		nY = (int)(Math.sin(nY)*nSpeed);
+		nX = (Math.cos(nX)*nSpeed);
+		nY = (Math.sin(nY)*nSpeed);
 	}
 
 
