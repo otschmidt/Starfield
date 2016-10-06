@@ -32,7 +32,7 @@ void draw()
 }
 void mousePressed()
 {
-	redraw();
+	
 	bob = new NormalParticle[200];
   for(int i = 0; i < bob.length; i++)
   {
@@ -51,16 +51,19 @@ void mousePressed()
 class NormalParticle
 {
   //your code here
-  double nX, nY, nX2, nY2, nX3, nY3, nSpeed, nAngle, lX, lY, lX2, lY2, lX3, lY3, a;
+  double nX, nY, nX2, nY2, nX3, nY3, nSpeed, nAngle, lX, lY, lX2, lY2, lX3, lY3;
   int nColor;
   NormalParticle()
   {
-  lX=(int)Math.random()*200+500;
+  /*lX=(int)Math.random()*200+500;
   lY=(int)Math.random()*200+500;
   lX2=(int)Math.random()*200+500;
   lY2=(int)Math.random()*200+500;
   lX3=(int)Math.random()*200+500;
   lY3=(int)Math.random()*200+500;
+  */
+  lX=500;
+  lY = 500;
   nX=(int)Math.random()*200+500;
   nY=(int)Math.random()*200+500;
   nX2=(int)Math.random()*200+500;
@@ -70,7 +73,7 @@ class NormalParticle
   nSpeed = 2;
   nAngle = Math.random()*(Math.PI*2);
   nColor = (int)(Math.random()*250);
-  a = 5;
+
   }
 
   void show()
@@ -89,16 +92,35 @@ class NormalParticle
     //fill(25,25,nColor);
     //ellipse((float)nX3,(float)nY3,20,20);
     
-    if(nX > 1000)
+    
+    if(10 > nX - lX)
     {
     	nX=(int)Math.random()*200+500;
     	
     }
-    if(nY > 1000)
+    if(10 > nY - lY)
     {
     	nY=(int)Math.random()*200+500;
     }
-    if(nX < 0)
+    if(10 > nX2 - lX2)
+    {
+    	nX=(int)Math.random()*200+500;
+    	
+    }
+    if(10 > nY2 - lY2)
+    {
+    	nY=(int)Math.random()*200+500;
+    }
+    if(10 > nX3 - lX3)
+    {
+    	nX=(int)Math.random()*200+500;
+    	
+    }
+    if(10 > nY3 - lY3)
+    {
+    	nY=(int)Math.random()*200+500;
+    }
+    /*if(nX < 0)
     {
     	nX =(int)Math.random()*200+500;
     }
@@ -106,6 +128,7 @@ class NormalParticle
     {
     	nY=(int)Math.random()*200+500;
     }
+    
     if(nX2 > 1000)
     {
     	nX2=(int)Math.random()*200+500;
@@ -139,57 +162,62 @@ class NormalParticle
     {
     	nY3=(int)Math.random()*200+500;
     }
+    */
+    
   }
   void move()
   {
-  	a= a++;
+  	
+
     nX = nX+(Math.cos(nAngle)*nSpeed);
     nY = nY+(Math.sin(nAngle)*nSpeed);
     nX2 = nX2+(Math.cos(nAngle)*nSpeed/2);
     nY2 = nY2+(Math.sin(nAngle)*nSpeed/2);
     nX3 = nX3+(Math.cos(nAngle)*nSpeed/4);
     nY3 = nY3+(Math.sin(nAngle)*nSpeed/4);
-    lX = nX - a;
-    lY = nY - a;
-    lX2 = nX2 - a;
-    lY2 = nY2 - a;
-    lX3 = nX3 - a;
-    lY3 = nY3 - a;
+    lX = nX -(Math.cos(nAngle)*nSpeed*20);
+    lY = nY- (Math.sin(nAngle)*nSpeed*20);
+    lX2 = nX2 -(Math.cos(nAngle)*nSpeed*50);
+    lY2 = nY2- (Math.sin(nAngle)*nSpeed*50);
+    lX3 = nX3 -(Math.cos(nAngle)*nSpeed*50);
+    lY3 = nY3- (Math.sin(nAngle)*nSpeed*50);
     if(nX > 1000)
     {
-    	nX = nX+(Math.cos(nAngle)*nSpeed);
+    	nX = nX+(Math.cos(nAngle)*nSpeed /4);
     	
     }
     if(nY > 1000)
     {
-    	nY = nY+(Math.sin(nAngle)*nSpeed);
+    	nY = nY+(Math.sin(nAngle)*nSpeed/4);
     }
     if(nX2 > 1000)
     {
-    	nX2 = nX2+(Math.cos(nAngle)*nSpeed);
+    	nX2 = nX2+(Math.cos(nAngle)*nSpeed/4);
     }
     if(nY2 > 1000)
     {
-    	nY2 = nY2+(Math.sin(nAngle)*nSpeed);
+    	nY2 = nY2+(Math.sin(nAngle)*nSpeed/4);
     }
     if(nX3 > 1000)
     	
     {
-    	nX3 = nX3+(Math.cos(nAngle)*nSpeed);
+    	nX3 = nX3+(Math.cos(nAngle)*nSpeed/4);
     }
     if(nY3 > 1000)
     {
-    	nY3 = nY3+(Math.sin(nAngle)*nSpeed);
+    	nY3 = nY3+(Math.sin(nAngle)*nSpeed/4);
     }
   }
-
+  	
+  
 
 
 }
 interface Particle
 {
 	//your code here
-	//public void move() {}
+	public void move();
+	public void show();
 }
 class OddballParticle //uses an interface
 {
